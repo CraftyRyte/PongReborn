@@ -6,6 +6,12 @@ class Entity:
         self.type = entity_type
         self.rect = pyg.Surface(position).get_rect(center=tuple(position))
         main.ALL_ENTITIES.append(self)
-
-# test if entity gets updated once appended in the list  
+    
+    def get_collisions(self):
+        import main
+        a = []
+        for entity in main.ALL_ENTITIES:
+            if self.rect.colliderect(entity.rect):
+                a.append(entity)
+        return a 
         
